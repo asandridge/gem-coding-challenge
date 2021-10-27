@@ -27,7 +27,7 @@ const Results = (props) => {
     return (
         <div>
 
-            <b>Your Score: {getScore()}/{Object.keys(props.quizResults).length}</b>
+            <h4 style={{ marginTop: '2%', marginBottom: '2%', fontWeight: 'bold' }}>Your Score: {getScore()}/{Object.keys(props.quizResults).length}</h4>
 
             {Object.keys(props.quizData).map(question => (
                 <div key={question}>
