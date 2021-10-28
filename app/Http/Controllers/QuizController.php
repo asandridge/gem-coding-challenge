@@ -30,7 +30,7 @@ class QuizController extends Controller
         $question->save();
 
         $question = new Quiz;
-        $question->question = "What does the \'Green\' in Green Egg Media represent?";
+        $question->question = "What does the 'Green' in Green Egg Media represent?";
         $question->answers = ["Ordinary Time", "The Holy Spirit", "The Green Bay Packers", "Grass"];
         $question->correctAnswer = 1;
         $question->save();

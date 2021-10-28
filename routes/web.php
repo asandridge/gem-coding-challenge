@@ -17,4 +17,3 @@ Route::get('/', function () {
     return view('app');
 });
 Route::get('get', 'App\Http\Controllers\QuizController@get');
-Route::get('set', 'App\Http\Controllers\QuizController@set');
