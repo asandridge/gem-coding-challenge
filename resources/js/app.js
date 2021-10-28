@@ -37,10 +37,8 @@ const App = () => {
     }
 
     return (
-        <div style={{ marginLeft: '5%' }}>
-            <div style={{ marginTop: '5%' }}>
-                <h2>GEM Online Interview Quiz</h2>
-            </div>
+        <div style={{ marginLeft: '5%', marginTop: '5%' }}>
+            <h2>GEM Online Interview Quiz</h2>
             <MainContent />
         </div>
     )

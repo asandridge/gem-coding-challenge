@@ -1,4 +1,4 @@
-import appStyles from "../../app.module.css";
+import styles from "../../app.module.css";
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 
@@ -13,10 +13,10 @@ const Quiz = (props) => {
     }
 
     return (
-        <div className={ appStyles.flexContainer }>
+        <div className={ styles.flexContainer }>
 
             {Object.keys(props.quizData).map(question => (
-                <div key={question}>
+                <div key={question} style={{ marginTop: "2%" }}>
                     <p>{question}</p>
                     <div>
                         {props.quizData[question].answers.map((answer, idx) => (
@@ -29,7 +29,7 @@ const Quiz = (props) => {
                 </div>
             ))}
 
-            <Button onClick={() => {props.onSubmit(quizResults)}} variant="contained" style={{ color: "white", backgroundColor: "#4CAF50", width: "10%" }}>Submit</Button>
+            <Button onClick={() => {props.onSubmit(quizResults)}} variant="contained" className={ styles.quizButton } style={{ backgroundColor: "#4CAF50", marginTop: "2%", marginBottom: "2%" }}>Submit</Button>
         </div>
     );
 }

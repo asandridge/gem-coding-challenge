@@ -1,3 +1,4 @@
+import styles from "../../app.module.css";
 import Button from '@mui/material/Button';
 
 const Results = (props) => {
@@ -25,12 +26,12 @@ const Results = (props) => {
     }
 
     return (
-        <div>
+        <div className={ styles.flexContainer }>
 
-            <h4 style={{ marginTop: '2%', marginBottom: '2%', fontWeight: 'bold' }}>Your Score: {getScore()}/{Object.keys(props.quizResults).length}</h4>
+            <h4 style={{ marginTop: '2%', fontWeight: 'bold' }}>Your Score: {getScore()}/{Object.keys(props.quizResults).length}</h4>
 
             {Object.keys(props.quizData).map(question => (
-                <div key={question}>
+                <div key={question} style={{ marginTop: '2%' }}>
                     <p>{question}</p>
                     <div>
                         {props.quizData[question].answers.map((answer, idx) => (
@@ -41,7 +42,8 @@ const Results = (props) => {
                     </div>
                 </div>
             ))}
-            <Button onClick={() => {props.onSubmit()}} variant="contained" style={{ color: "white", width: "15%", marginBottom: "5%" }}>Try Again</Button>
+
+            <Button onClick={() => {props.onSubmit()}} variant="contained" className={ styles.quizButton } style={{ marginTop: "2%", marginBottom: "2%" }}>Try Again</Button>
         </div>
     );
 }
