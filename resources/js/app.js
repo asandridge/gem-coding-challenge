@@ -7,51 +7,13 @@ import ReactDOM from 'react-dom';
 const App = () => {
 
     const [quizResults, setQuizResults] = useState({});
-    const quizData = {
-        "What does 'Tolle Lege' mean?": {
-            "answers": [
-                "Take and Read",
-                "Think and Learn",
-                "Read and Write",
-                "Pray and Love"
-            ],
-            "correctAnswer": 0
-        },
-        "What is the best programming language?": {
-            "answers": [
-                "Javascript",
-                "PHP",
-                "Python",
-                "Groovy"
-            ],
-            "correctAnswer": 2
-        },
-        "What does the 'Green' in Green Egg Media represent?": {
-            "answers": [
-                "Ordinary Time",
-                "The Holy Spirit",
-                "The Green Bay Packers",
-                "Grass"
-            ],
-            "correctAnswer": 1
-        },
-        "When was GEM founded?": {
-            "answers": [
-                "2006",
-                "2006",
-                "2006",
-                "2008"
-            ],
-            "correctAnswer": 3
-        },
-    };
+    const [quizData, setQuizData] = useState({});
 
     useEffect(() => {
-        const url = '/src/api/quiz_data.php'
-        axios.get(url).then((response) => {
-            console.log(response.data)
+        axios.get('/quiz').then(response => {
+            setQuizData(response.data)
         })
-    });
+    }, []);
 
     const MainContent = () => {
         if (Object.keys(quizResults).length) {
