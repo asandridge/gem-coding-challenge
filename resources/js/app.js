@@ -10,7 +10,7 @@ const App = () => {
     const [quizData, setQuizData] = useState({});
 
     useEffect(() => {
-        axios.get('/quiz').then(response => {
+        axios.get('/get').then(response => {
             setQuizData(response.data)
         })
     }, []);

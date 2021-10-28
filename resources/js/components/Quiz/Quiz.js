@@ -17,7 +17,7 @@ const Quiz = (props) => {
 
             {Object.keys(props.quizData).map(question => (
                 <div key={question} style={{ marginTop: "2%" }}>
-                    <p>{question}</p>
+                    <p>{props.quizData[question].question}</p>
                     <div>
                         {props.quizData[question].answers.map((answer, idx) => (
                             <div key={question+idx}>

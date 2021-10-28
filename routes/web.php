@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('app');
 });
-Route::get('quiz', 'App\Http\Controllers\QuizController@index');
+Route::get('get', 'App\Http\Controllers\QuizController@get');
+Route::get('set', 'App\Http\Controllers\QuizController@set');
