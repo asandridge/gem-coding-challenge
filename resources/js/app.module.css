@@ -1,0 +1,11 @@
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.quizButton {
+    width: 15%;
+    color: white;
+}
