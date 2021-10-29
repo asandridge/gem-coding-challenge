@@ -1,65 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Live Demo
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+http://64.227.10.216/
 
-## About Laravel
+## Architecture and Technology
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+For this project I decided to use React.js for the front end and Laravel with MongoDB for the back end. The project is hosted through Digital Ocean. Quiz data is stored in a remote MongoDB cluster and is loaded into the app at runtime. I chose React since it is the most popular and well used Javascript framework, as well as something I have used in the past. I decided to use Laravel as part of the back end because it is something I have never worked with before, and thought it would be worthwhile to learn about PHP and this popular framework. Lastly, I decided to use MongoDB so that it could easily deliver JSON data to the front end.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Security
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This is not designed as a fully secure quiz application. Due to time constraints, some trade-offs had to be made. One of which is that the answers to the quiz are delivered to the front end application as part of the initial GET request. This means that anyone with enough technical skill could view the answers before submitting the quiz. If this were a real quiz application, it would be important to only deliver the questions and answer-options to the front end on load, sending the user answers to the server on submission, which would validate them on the server side and return the correct answers to the user.
 
-## Learning Laravel
+## Local Setup
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+I detail the steps for setting up on Debian/Ubuntu, but detailed setup for other systems can be found in the respective links.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Most of the setup can be found here:
 
-## Laravel Sponsors
+https://www.mongodb.com/compatibility/mongodb-laravel-intergration
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Download the project:**
+```
+git clone https://github.com/asandridge/gem-coding-challenge
+```
 
-### Premium Partners
+**Install nvm and Node:**
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install 16.13.0
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**Download PHP Packages:**
+```
+sudo apt install php-bcmath php-mbstring php-xml php7.4-cli php-curl php-pear
+```
+https://www.php.net/manual/en/install.php
 
-## Contributing
+**Install Composer:**
+```
+curl -sS https://getcomposer.org/installer |php
+sudo mv composer.phar /usr/local/bin/composer
+```
+https://getcomposer.org/download/
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Install Laravel-MongoDB:**
+```
+cd gem-coding-challenge
+sudo pecl install mongodb
+```
+Add this line to php.ini:
+```
+extension="mongodb.so"
+```
+https://www.mongodb.com/compatibility/mongodb-laravel-intergration
 
-## Code of Conduct
+**Setup MongoDB Server:**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+There are a few ways to do this. The first way which I recommend is to set up a local installation. The second (which I did for this project) is to set up a remote cluster through MongoDB's Atlas.
 
-## Security Vulnerabilities
+Once you have your MongoDB URI you can add this line to your `.env` file in `gem-coding-challenge`:
+```
+MONGODB_URI=$YOUR_URI_HERE
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+https://www.prisma.io/dataguide/mongodb/setting-up-a-local-mongodb-database
 
-## License
+https://www.mongodb.com/atlas/database
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Install Local Packages:**
+```
+cd gem-coding-challenge
+npm install
+composer install
+```
+
+**Start Laravel:**
+```
+php artisan serve
+```
+
+The application should be served on http://127.0.0.1:8000/!
