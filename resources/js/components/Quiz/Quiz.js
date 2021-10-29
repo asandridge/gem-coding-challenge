@@ -16,7 +16,7 @@ const Quiz = (props) => {
         <div className={ styles.flexContainer }>
 
             {Object.keys(props.quizData).map(question => (
-                <div key={question} style={{ marginTop: "2%" }}>
+                <div key={question} style={{ marginTop: "1%" }}>
                     <p>{props.quizData[question].question}</p>
                     <div>
                         {props.quizData[question].answers.map((answer, idx) => (

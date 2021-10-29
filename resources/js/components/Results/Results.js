@@ -28,10 +28,10 @@ const Results = (props) => {
     return (
         <div className={ styles.flexContainer }>
 
-            <h4 style={{ marginTop: '2%', fontWeight: 'bold' }}>Your Score: {getScore()}/{Object.keys(props.quizResults).length}</h4>
+            <h3 style={{ marginTop: '2%', fontWeight: 'bold' }}>Your Score: {getScore()}/{Object.keys(props.quizResults).length}</h3>
 
             {Object.keys(props.quizData).map(question => (
-                <div key={question} style={{ marginTop: '2%' }}>
+                <div key={question} style={{ marginTop: '1%' }}>
                     <p>{props.quizData[question].question}</p>
                     <div>
                         {props.quizData[question].answers.map((answer, idx) => (

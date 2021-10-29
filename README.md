@@ -4,7 +4,7 @@ http://64.227.10.216/
 
 ## Architecture and Technology
 
-For this project I decided to use React.js for the front end and Laravel with MongoDB for the back end. The project is hosted through Digital Ocean. Quiz data is stored in a remote MongoDB cluster and is loaded into the app at runtime. I chose React since it is the most popular and well used Javascript framework, as well as something I have used in the past. I decided to use Laravel as part of the back end because it is something I have never worked with before, and thought it would be worthwhile to learn about PHP and this popular framework. Lastly, I decided to use MongoDB so that it could easily deliver JSON data to the front end.
+For this project I decided to use React.js for the front end and Laravel with MongoDB for the back end. The project is hosted on a Digital Ocean droplet with Nginx. Quiz data is stored in a remote MongoDB cluster (populated on server start) and is loaded into the app at runtime. I chose React since it is the most popular and well used Javascript framework, as well as something I have used in the past. I decided to use Laravel as part of the back end because it is something I have never worked with before, and thought it would be worthwhile to learn about PHP and this popular framework. Lastly, I decided to use MongoDB so that it could easily deliver JSON data to the front end.
 
 ## Security
 
@@ -32,6 +32,10 @@ nvm install 16.13.0
 **Download PHP Packages:**
 ```
 sudo apt install php-bcmath php-mbstring php-xml php7.4-cli php-curl php-pear
+```
+For running the application on an Nginx server the following packages are also required:
+```
+sudo apt install php-fpm php-mongo
 ```
 https://www.php.net/manual/en/install.php
 
